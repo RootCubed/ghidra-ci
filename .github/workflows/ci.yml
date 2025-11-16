@@ -206,26 +206,11 @@ jobs:
           cd ghidra-ci
           echo "# Changelog" > CHANGELOG.md
           echo "Built from [${{ inputs.repo }}@${{ inputs.rev }}](https://github.com/${{ inputs.repo }}/commit/${{ inputs.rev }})" >> CHANGELOG.md
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.date.outputs.date }}
-          release_name: Release ${{ steps.date.outputs.date }}(${{ steps.date.outputs.rev }})
+          name: Release ${{ steps.date.outputs.date }}(${{ steps.date.outputs.rev }})
           body_path: ./ghidra-ci/CHANGELOG.md
-          # TODO: This is a horrible hack.
-          commitish: "master"
-          draft: false
-          prerelease: false
-      - name: Upload Release Asset
-        id: upload-release-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./build/dist/${{ steps.date.outputs.dist }}
-          asset_name: release.zip
-          asset_content_type: application/zip
+          files: build/dist/${{ steps.date.outputs.dist }}
