@@ -214,3 +214,8 @@ jobs:
           name: Release ${{ steps.date.outputs.date }}(${{ steps.date.outputs.rev }})
           body_path: ./ghidra-ci/CHANGELOG.md
           files: build/dist/${{ steps.date.outputs.dist }}
+      - name: Trigger extensions build
+        uses: benc-uk/workflow-dispatch@v1.2
+        with:
+          workflow: Build extensions
+          inputs: '{ "tag": "${{ steps.date.outputs.date }}" }'
