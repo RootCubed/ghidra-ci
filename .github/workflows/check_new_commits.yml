@@ -1,4 +1,5 @@
 name: Check for new commits
+
 on:
   schedule:
     - cron: '30 12 * * *'
@@ -6,7 +7,7 @@ on:
     inputs:
       repo:
         description: Ghidra GitHub repository
-        default: NationalSecurityAgency/ghidra
+        default: RootCubed/ghidra
         required: true
 
 env:
