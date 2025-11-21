@@ -11,7 +11,7 @@ on:
         required: true
 
 env:
-  GHIDRA_REPO: ${{ inputs.repo || vars.GHIDRA_REPO || 'NationalSecurityAgency/ghidra' }}
+  GHIDRA_REPO: ${{ inputs.repo || vars.GHIDRA_REPO || 'RootCubed/ghidra' }}
 
 jobs:
   # Ensure all steps use a common revision
