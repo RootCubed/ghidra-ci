@@ -15,7 +15,7 @@ on:
         required: true
 
 env:
-  GRADLE_VERSION: 9.6
+  GRADLE_VERSION: '9.6.1'
   JAVA_VERSION: 25
 
 jobs:
