@@ -8,7 +8,8 @@ on:
         required: true
 
 env:
-  JAVA_VERSION: 21
+  GRADLE_VERSION: 9.6
+  JAVA_VERSION: 25
 
 jobs:
   build-extension:
@@ -55,7 +56,7 @@ jobs:
         uses: gradle/actions/setup-gradle@v3
         with:
           build-root-directory: ${{ env.REPO_NAME }}
-          gradle-version: "8.10"
+          gradle-version: ${{ env.GRADLE_VERSION }}
 
       - name: Build extension
         working-directory: ${{ env.REPO_NAME }}

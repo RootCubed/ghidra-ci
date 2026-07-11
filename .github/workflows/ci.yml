@@ -15,8 +15,8 @@ on:
         required: true
 
 env:
-  GRADLE_VERSION: 8.5
-  JAVA_VERSION: 21
+  GRADLE_VERSION: 9.6
+  JAVA_VERSION: 25
 
 jobs:
   build-natives:
