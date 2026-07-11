@@ -72,7 +72,7 @@ jobs:
         uses: eskatos/gradle-command-action@v3
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
-          arguments: --init-script gradle/support/fetchDependencies.gradle init
+          arguments: -I gradle/support/fetchDependencies.gradle
 
       - name: Setup Linux ARM toolchain
         if: ${{ matrix.target == 'linux_arm_64' }}
@@ -182,7 +182,7 @@ jobs:
         uses: eskatos/gradle-command-action@v3
         with:
           gradle-version: ${{ env.GRADLE_VERSION }}
-          arguments: --init-script gradle/support/fetchDependencies.gradle init
+          arguments: -I gradle/support/fetchDependencies.gradle
 
       # TODO: Pre-build GhidraDev
 
